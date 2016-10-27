@@ -241,6 +241,9 @@ if [ $RUNNING_FOR_TEST -eq 0 ]; then
 
     # Pacify Make (Make doesn't know that the generated Ruby directory can vary)
     mkdir -p ${BASE_DIR}/intermediate/${BUILD_CONFIGURATION}/ruby
+else 
+    echo "Installing Mocha into Ruby ..."
+    elevate ${RUBY_DESTDIR}/bin/gem install ${BASE_DIR}/source/ext/gems/mocha-1.2.1.gem
 fi
 
 exit 0
