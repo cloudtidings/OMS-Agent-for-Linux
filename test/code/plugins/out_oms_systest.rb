@@ -82,8 +82,7 @@ class OutOMSTest < OutOMSSystemTestBase
     assert(output.handle_record("oms.changetracking", record), "Failed to send change tracking updates data : '#{$log.logs}'")
 
     $log.clear
-    puts "Shujun's test code is running"
-
+    
     record = 
     {
       "DataType"=>"UPDATES_RUN_PROGRESS_BLOB", 
