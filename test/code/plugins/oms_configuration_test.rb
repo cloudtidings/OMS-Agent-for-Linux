@@ -8,7 +8,7 @@ module OMS
 
   class ConfigurationTest < Test::Unit::TestCase
 
-    TEST_WORKSPACE_ID = '83486735-c7fc-4143-865c-b007bd62b9fb'
+    TEST_WORKSPACE_ID = '08d4b0c0-7fac-4159-987c-000271282eff'
     TEST_AGENT_GUID = '99f96fba-f08c-483c-be81-6af3fded99c4'
     TEST_CERT_UPDATE_ENDPOINT = 'https://www.fakeoms.com/ConfigurationService.Svc/RenewCertificate'
     TEST_DSC_ENDPOINT = 'https://www.fakedsc.com/Accounts/08d4b0c0-7fac-4159-987c-000271282eff'
