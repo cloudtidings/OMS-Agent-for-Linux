@@ -476,7 +476,8 @@ class LinuxUpdatesTest < Test::Unit::TestCase
     assert_equal("HostName", result['DataItems'][0]["Computer"])
     assert_equal(fakeUpdateRunName, result['DataItems'][0]["UpdateRunName"])
     assert_equal('cairo-dock-data:amd64 (3.4.1-0ubuntu1, automatic)', result['DataItems'][0]["UpdateTitle"])
-    assert_equal(fakeEndDate, result['DataItems'][0]["EndDate"])
-    assert_equal(fakeStartDate, result['DataItems'][0]["StartDate"])
+    assert_equal(fakeEndDate, result['DataItems'][0]["EndTime"])
+    assert_equal(fakeStartDate, result['DataItems'][0]["StartTime"])
   end
+  
 end

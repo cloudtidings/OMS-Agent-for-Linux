@@ -30,7 +30,8 @@ module Fluent
     end
 
     def filter(tag, time, record)
-       return LinuxUpdates.process_update_run(record, tag, @hostname, time)
+      linuxUpdates = LinuxUpdates.new
+      return linuxUpdates.process_update_run(record, tag, @hostname, time)
     end # filter
   end # class
 end # module

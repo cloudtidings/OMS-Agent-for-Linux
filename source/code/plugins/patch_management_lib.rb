@@ -328,12 +328,13 @@ class LinuxUpdates
             for i in list_of_packages_installed;
                 ret = {}
                 ret["Computer"] = host
+                ret["OSType"] = "Linux"
                 ret["UpdateRunName"] = update_run_name
                 ret["UpdateTitle"] = i.strip
                 ret["UpdateId"] = SecureRandom.uuid
                 ret["Status"] = status
-                ret["StartDate"] = updateRunJson["Start-Date"].strip
-                ret["EndDate"] = updateRunJson["End-Date"].strip
+                ret["StartTime"] = updateRunJson["Start-Date"].strip
+                ret["EndTime"] = updateRunJson["End-Date"].strip
                 if (Integer(updateRunJson["Start-Date"]) rescue false)
                     ret["TimeStamp"] = OMS::Common.format_time(updateRunJson["Start-Date"].strftime(APT_GET_START_DATE_TIME_FORMAT))
                 else
@@ -347,13 +348,13 @@ class LinuxUpdates
             for i in list_of_packages_upgraded;
                 ret = {}
                 ret["Computer"] = host
+                ret["OSType"] = "Linux"
                 ret["UpdateRunName"] = update_run_name
-                ret["UpdateTitle"] = 'TBD'
+                ret["UpdateTitle"] = i.strip
                 ret["UpdateId"] = SecureRandom.uuid
-                ret["KBID"] = i.strip
                 ret["Status"] = status
-                ret["StartDate"] = updateRunJson["Start-Date"].strip
-                ret["EndDate"] = updateRunJson["End-Date"].strip
+                ret["StartTime"] = updateRunJson["Start-Date"].strip
+                ret["EndTime"] = updateRunJson["End-Date"].strip
                 if (Integer(updateRunJson["Start-Date"]) rescue false)
                     ret["TimeStamp"] = OMS::Common.format_time(updateRunJson["Start-Date"].strftime(APT_GET_START_DATE_TIME_FORMAT))
                 else
@@ -369,8 +370,6 @@ class LinuxUpdates
     end
 
     def populate_package_updated_record(record, status, kbid)
-        
-        
         return ret
     end
     
