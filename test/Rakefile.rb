@@ -6,10 +6,6 @@ require 'rake/clean'
 task :test => [:prerequisites, :base_test, :plugintest]
 desc 'check for gem dependencies and install any missing gems'
 Rake::TestTask.new(:prerequisites) do
-
-  puts "Shujun's log - #{ENV['RUBY_DEST_DIR']}"
-  puts "Shujun's task to install mocha"
-
   required_gems = %w{
                      mocha
                      }
