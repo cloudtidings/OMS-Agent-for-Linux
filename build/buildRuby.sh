@@ -241,7 +241,6 @@ if [ $RUNNING_FOR_TEST -eq 0 ]; then
 
     # Pacify Make (Make doesn't know that the generated Ruby directory can vary)
     mkdir -p ${BASE_DIR}/intermediate/${BUILD_CONFIGURATION}/ruby
-else 
 fi
 
 exit 0
