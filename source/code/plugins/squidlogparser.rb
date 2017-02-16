@@ -16,28 +16,17 @@ module Fluent
     def initialize
       require 'fluent/parser'
       super
+      @parser = SquidLogParserLib.new()
     end
 
     # This method is called after config_params have read configuration parameters
     def configure(conf)
       super
-      @parser = SquidLogParserLib.new(RuntimeError.new) 
     end
 
     def parse(text)
       time, record = @parser.parse(text)
       yield time, record
-    end
-  end
-
-  class SquidLoggingBase
-     def logerror(text)
-     end
-  end
-
-  class RuntimeError < SquidLoggingBase
-    def logerror(text)
-      $log.error "RuntimeError: #{text}"
     end
   end
 
@@ -48,10 +37,6 @@ module Fluent
     require 'etc'
     require_relative 'oms_common'
     require 'fluent/parser'
-
-    def initialize(error_handler)
-      @error_handler = error_handler
-    end
 
     REGEX =/(?<eventtime>(\d+))\.\d+\s+(?<duration>(\d+))\s+(?<sourceip>(\d+\.\d+\.\d+\.\d+))\s+(?<cache>(\w+))\/(?<status>(\d+))\s+(?<bytes>(\d+)\s+)(?<response>(\w+)\s+)(?<url>([^\s]+))\s+(?<user>(\w+|\-))\s+(?<method>(\S+.\S+))/
 
@@ -80,7 +65,7 @@ module Fluent
           
         }
       rescue => e
-        @error_handler.logerror("Unable to parse the line #{e}")
+        $log.error("Unable to parse the line #{e}")
       end
 
       return time, data
